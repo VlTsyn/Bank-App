@@ -1,0 +1,3 @@
+fail_mars start
+fail_mars error: Houston, we have a problem!!!. Inputs: (42,), {}
+fail_mars end
