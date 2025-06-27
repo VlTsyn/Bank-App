@@ -4,9 +4,10 @@ def log(filename=None):
     def wrapper(function):
         def inner(*args, **kwargs):
             messages = []
+            result = function(*args, **kwargs)
             try:
                 messages.append(f"{function.__name__} start")
-                messages.append(f"{function.__name__} result: {function(*args, **kwargs)}")
+                messages.append(f"{function.__name__} result: {result}")
             except Exception as e:
                 messages.append(f"{function.__name__} error: {e}. Inputs: {args}, {kwargs}")
             finally:
@@ -17,6 +18,8 @@ def log(filename=None):
                             f.write(message + "\n")
                 else:
                     print("\n".join(messages))
+
+            return result
 
         return inner
 
