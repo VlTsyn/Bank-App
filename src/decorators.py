@@ -4,12 +4,13 @@ def log(filename=None):
     def wrapper(function):
         def inner(*args, **kwargs):
             messages = []
-            result = function(*args, **kwargs)
             try:
                 messages.append(f"{function.__name__} start")
+                result = function(*args, **kwargs)
                 messages.append(f"{function.__name__} result: {result}")
             except Exception as e:
                 messages.append(f"{function.__name__} error: {e}. Inputs: {args}, {kwargs}")
+                raise
             finally:
                 messages.append(f"{function.__name__} end")
                 if filename:
