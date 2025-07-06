@@ -20,7 +20,10 @@ def fail_function(arg):
 
 
 def test_fail_function(capsys):
-    fail_function(10)
+    try:
+        fail_function(10)
+    except Exception as e:
+        assert str(e) == "Exception error"
     captured = capsys.readouterr()
     assert "fail_function start" in captured.out
     assert "fail_function error: Exception error. Inputs: (10,), {}" in captured.out
@@ -49,7 +52,10 @@ def test_fail_file_logging():
     def fail_mars(arg):
         raise Exception("Houston, we have a problem!!!")
 
-    fail_mars(42)
+    try:
+        fail_mars(42)
+    except Exception as e:
+        assert str(e) == "Houston, we have a problem!!!"
     with open(filename, "r") as f:
         result = f.read()
     assert "fail_mars start" in result
