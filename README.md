@@ -16,6 +16,10 @@ python3 -m venv .venv
 .venv\Scripts\activate
 pip install poetry
 poetry install
+poetry add python-dotenv
+poetry add requests
+poetry add pandas
+poetry add openpyxl
 ```
 ## Тестирование:
 
@@ -36,3 +40,5 @@ poetry install
 - Декоратор для логирования выполнения функции, ее результатов и ошибок
 - Функция открытия JSON-файла
 - Функция конвертации USD и EUR в рубли
+- Функция для считывания CSV-файлов
+- Функция для считывания Excel-файлов
