@@ -9,6 +9,8 @@ def filter_by_state(transactions_list: list[dict[str, Any]], state: str = "EXECU
         return "Данные отсутствуют"
     state_filter = []
     for item in transactions_list:
+        if not item:
+            continue
         if item.get("state"):
             if item["state"] == state:
                 state_filter.append(item)
